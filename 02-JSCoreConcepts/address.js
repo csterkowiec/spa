@@ -13,3 +13,11 @@ ul. Długa 15
 30-781 Kraków
 POLAND
 */
+
+address = title + " " + name + " " + surname + "\nul." + street + "\n" + zip + " " + city + "\n" + country.toUpperCase()
+console.log(address)
+
+console.log()
+
+address = `${title} ${name} ${surname}\nul. ${street}\n${zip} ${city}\n${country.toUpperCase()}` 
+console.log(address)

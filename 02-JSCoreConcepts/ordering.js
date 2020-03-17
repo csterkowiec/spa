@@ -7,14 +7,14 @@ const reverse = function(arr) {
 
 const sort = function(arr) {
     arrSorted = [];
-    // ...
-    return arrSorted;
+    arr.forEach(item => arrSorted.push(item));
+    return arrSorted.sort();
 }
 
 const even = function(arr) {
     let arrEven = [];
-    // ...
-    return arrEven;
+    arr.forEach(item => arrEven.push(item));
+    return arrEven.filter(number => {if(number % 2 == 0) return number});
 }
 
 numbers = [8,3,2,1,5,4,6];
@@ -23,3 +23,4 @@ console.log(reverse(numbers));
 console.log(even(numbers));
 console.log(reverse(even(numbers)));
 console.log(even(sort(numbers)));
+console.log(numbers);
