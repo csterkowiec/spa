@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>People</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>Personal Data</h1>
+		<input type="button" value="Display data" onclick="place()">
+		<p id="peopleData"></p>
+
+		<script>
+			function place(){
+                        fetch('people.json')
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        appendData(data);
+                    })
+                    .catch(function (err) {
+                        console.log('error: ' + err);
+                    });
+
+                function appendData(data) {
+                    var peopleData = document.getElementById("peopleData");
+                    if (peopleData.innerHTML == ''){
+                        for (var i = 0; i < data.length; i++) {
+                            var par = document.createElement("p");
+                            par.innerHTML = i+1 + '. ' + data[i].name + ' ' + data[i].surname.toUpperCase() + ', ' + data[i].country;
+                            peopleData.appendChild(par);
+                        }
+                    }
+                }
+            }
+
+			
+			
+		</script>
+
+	</body>
+</html>

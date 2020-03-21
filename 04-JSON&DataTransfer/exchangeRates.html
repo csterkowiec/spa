@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Exchange Rates</title>
+		<meta charset="UTF-8">
+	</head>
+    <body onload="rates('eur/?format=json', 'EUR'); rates('usd/?format=json', 'USD'); rates('gbp/?format=json', 'GBP')">
+        <h1>Exchange Rates</h1>
+        <div id = "EUR">Kurs Euro: </div>
+        <div id = "USD">Kurs Dolara: </div>
+        <div id = "GBP">Kurs Funta: </div>
+		
+		<script>
+            function rates(uri, id){
+                var domain = 'http://api.nbp.pl/api/exchangerates/rates/c/'
+				var method = 'GET';
+                var URL = domain + uri;
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){ 
+					if(this.readyState==4 && this.status==200){
+					display(this, id);}};
+				xhr.open(method, URL);
+                xhr.send();
+            }
+			function display(r, id){
+                document.getElementById(id).innerHTML += JSON.parse(r.response).rates[0].bid;
+			};
+		</script>
+
+	</body>
+</html>
